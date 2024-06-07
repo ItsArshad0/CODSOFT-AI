@@ -1,0 +1,34 @@
+import re
+
+def respond_to_user_input(user_input):
+    # Define patterns and responses
+    patterns = {
+        r'.*hello.*': "Hello! How can I assist you?",
+        r'.*hi.*': "Hi there! How can I help you?",
+        r'.*weather.*': "I'm sorry, I'm just a simple chatbot and I don't know the weather.",
+    }
+    
+    # Check user input against patterns
+    for pattern, response in patterns.items():
+        if re.match(pattern, user_input.lower()):
+            return response
+    
+    # Default response if no pattern matches
+    return "I'm sorry, I don't understand. Can you please rephrase?"
+
+def main():
+    print("Welcome to the simple chatbot!")
+    print("You can start chatting. Type 'bye' to exit.")
+    
+    # Start conversation loop
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'bye':
+            print("Chatbot: Goodbye!")
+            break
+        else:
+            response = respond_to_user_input(user_input)
+            print("Chatbot:", response)
+
+if __name__ == "__main__":
+    main()
